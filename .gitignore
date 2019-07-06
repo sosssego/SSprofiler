@@ -26,3 +26,12 @@
 *.exe
 *.out
 *.app
+
+# visual studio internal directory
+.vs/
+
+# git internal directory
+.git/
+
+# cmake build directory
+build/
