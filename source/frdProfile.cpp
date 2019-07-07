@@ -5,6 +5,11 @@ using namespace std;
 
 namespace frd {
 
+
+	Profiler::Profiler() {
+		addNewTimer("Total");
+		startTimer(0);
+	}
 	int Profiler::addNewTimer(string name) {
 		long long temp;
 		temp = 0;

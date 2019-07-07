@@ -17,6 +17,6 @@ namespace frd {
 		void addPartialTime(int i);
 		void clearStoredTime(int i);
 		void printTimeSummary();
-
+		Profiler();
 	};
 }
