@@ -7,4 +7,4 @@ add_library(SSprofiller
 	source/frdProfile.cpp
 )
 
-target_include_directories(SSprofiller INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/source)
+target_include_directories(SSprofiller INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/source")
