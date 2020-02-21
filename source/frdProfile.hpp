@@ -5,11 +5,13 @@
 #include <cstdint>
 
 namespace frd {
+	using secondsDouble = std::chrono::duration<double>;
+	using timePoint = std::chrono::time_point<std::chrono::steady_clock>;
 	class Profiler
 	{
 	public:
-		std::vector<std::chrono::duration<double>> total_time;
-		std::vector<std::chrono::time_point<std::chrono::high_resolution_clock>> last_time;
+		std::vector<secondsDouble> total_time;
+		std::vector<timePoint> last_time;
 		std::vector<std::string> names;
 		//std::chrono::time_point<int64_t> current_time;
 

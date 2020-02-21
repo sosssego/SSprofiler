@@ -5,28 +5,29 @@ using namespace std;
 
 namespace frd {
 
-
+	using namespace chrono;
 	Profiler::Profiler() {
 		addNewTimer("Total");
 		startTimer(0);
 	}
+
 	int Profiler::addNewTimer(string name) {
-		total_time.push_back(std::chrono::duration < int64_t>(0));
-		std::chrono::time_point<std::chrono::high_resolution_clock> temp = std::chrono::high_resolution_clock::now();
+		total_time.push_back(secondsDouble(0));
+		timePoint temp = steady_clock::now();
 		last_time.push_back(temp);
 		names.push_back(name);
 		return int(total_time.size()) - 1;
 	}
 	void Profiler::startTimer(int i) {
-		last_time[i] = std::chrono::high_resolution_clock::now();
+		last_time[i] = steady_clock::now();
 	}
 	void Profiler::addPartialTime(int i) {
-		auto current_time = std::chrono::high_resolution_clock::now();
+		auto current_time = steady_clock::now();
 		total_time[i] += current_time - last_time[i];
 		last_time[i] = current_time;
 	}
 	void Profiler::clearStoredTime(int i) {
-		total_time[i] = 0ms;
+		total_time[i] = 0s;
 	}
 	void Profiler::printTimeSummary() {
 		addPartialTime(0);
@@ -34,8 +35,7 @@ namespace frd {
 			printf("%15s\t%.12fsec,\t%.6f\t%% \n",
 				names[i].c_str(),
 				total_time[i].count(),
-				//double(total_time[i].count()) * 0.000000001,
-				100 * (float)(total_time[i].count()) / (float)total_time[0].count());
+				100 * (total_time[i].count()) / total_time[0].count());
 
 		}
 	}
